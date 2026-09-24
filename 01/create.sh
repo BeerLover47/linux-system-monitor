@@ -1,7 +1,7 @@
 #!/bin/bash
 
 check_free_space() {
-    local free_mb=$(df --output=avail -m / | tail -n 1)
+    local free_mb=$(df -m --output=avail / | tail -n 1)
 
     if [ "$free_mb" -le 1024 ]; then
         echo "Attention: there is less than 1GB of space left on the disk" >&2

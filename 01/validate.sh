@@ -28,14 +28,14 @@ if [[ ! "$2" =~ $num_regex ]] || [[ ! "$4" =~ $num_regex ]]; then
     exit 1
 fi
 
-letters_regex_arg3='^([a-zA-Z]{1,7})$'
-if [[ ! "$3" =~ $letters_regex_arg3 ]]; then
+letters_arg3='^([a-zA-Z]{1,7})$'
+if [[ ! "$3" =~ $letters_arg3 ]]; then
     echo "Error: Argument "$3" must contain from 1 to 7 letters"
     exit 1
 fi
 
-letters_regex_arg5='^([a-zA-Z]{1,7})\.([a-zA-Z]{1,3})$'
-if [[ ! "$5" =~ $letters_regex_arg5 ]]; then
+letters_arg5='^([a-zA-Z]{1,7})\.([a-zA-Z]{1,3})$'
+if [[ ! "$5" =~ $letters_arg5 ]]; then
     echo "Error: invalid format"
     exit 1
 fi
