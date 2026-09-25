@@ -13,7 +13,7 @@ check_free_space() {
 
 get_target_dirs() {
   find / -maxdepth 4 -type d -writable 2>/dev/null |
-  grep -vE '/(bin|sbin|sys|dev|proc|run)(\/|$)'
+  grep -vE '/(bin|sbin|sys|dev|proc|run|mnt|media)(\/|$)'
 }
 
 create_files_in_folder() {
@@ -31,7 +31,7 @@ create_files_in_folder() {
     fi
     local file_name=$(generate_file_name "$file_letters" "$file_ext" "$j")
     local file_path="$folder_path/$file_name"
-    fallocate -l "${size_num}M" "$file_path"
+    fallocate -l "${size_num}M" "$file_path" 2>/dev/null || truncate -s "${size_num}M" "$file_path"
     echo "$file_path $(date '+%Y-%m-%d %H:%M:%S') $size_raw" >> "$log_file"
   done
 }
