@@ -3,7 +3,7 @@
 
 validate_args() {
 if [ "$#" -ne 6 ]; then
-    echo "Error: Six arguments are expected."
+    echo "Error: Six arguments are expected." >&2
     exit 1
 fi
 
