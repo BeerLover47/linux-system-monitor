@@ -18,7 +18,7 @@ clean_by_log() {
     echo "$count: $line"
     fi
   done < "$log_file"
-  echo "Total deleted: $count object."
+  echo "Total deleted: $count objects."
 }
 
 clean_by_time() {
@@ -48,26 +48,26 @@ clean_by_time() {
       rm -rf "$target"
       echo "Deleted: $target"
     fi
-  done < <(find / -maxdepth 6 \
+  done < <(find / \
     \( -path '/proc' -o -path '/sys' -o -path '/dev' -o -path '/run' -o -path '/bin' -o -path '/sbin' -o -path '/mnt' -o -path '/media' \) -prune \
     -o -newermt "$find_start" ! -newermt "$find_end" -name "*_[0-9][0-9][0-9][0-9][0-9][0-9]*" -print 2>/dev/null)
 }
 
-# ------------------------------------------------------------------------------
-# Способ 3: Очистка по маске имени (символы, _ и дата DDMMYY)
-# ------------------------------------------------------------------------------
-# 📖 Где смотреть в гайде:
-#   - DO4_GUIDE.md -> Раздел 2.6, пункт 1 и 3 ("find, исключение системных веток и порядок обхода")
-# 💡 Где ты это уже делал:
-#   - 01/ и 02/ (вспоминай, как формировались имена: *_DDMMYY)
-#   - training/ex01.sh (маска даты DDMMYY)
-# 🔍 Намёк на синтаксис find:
-#   find /каталог -name "*_DDMMYY" (или regex по дате)
-# ------------------------------------------------------------------------------
 clean_by_mask() {
   echo "Cleanup method 3: by name mask"
-  # TODO:
-  # 1. Запросить у пользователя маску даты (например, 260926) или полную маску
-  # 2. Найти объекты через find по имени: find ... -name "*_${date_mask}"
-  # 3. Удалить найденные объекты
+
+  read -r -p "Enter mask (format _DDMMYY or characters_DDMMYY): " regex_date
+  if [ -z "$regex_date" ]; then
+    echo "Error: please enter mask" >&2
+    exit 1
+  fi
+
+  while IFS= read -r target; do
+    if [ -e "$target" ]; then
+      rm -rf "$target"
+      echo "Deleted: $target"
+    fi
+  done < <(find / \
+    \( -path '/proc' -o -path '/sys' -o -path '/dev' -o -path '/run' -o -path '/bin' -o -path '/sbin' -o -path '/mnt' -o -path '/media' \) -prune \
+    -o -name "*${regex_date}*" -print 2>/dev/null)
 }
