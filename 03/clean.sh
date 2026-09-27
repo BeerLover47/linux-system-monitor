@@ -1,53 +1,56 @@
 #!/bin/bash
 
-# ==============================================================================
-# МОДУЛЬ ОЧИСТКИ ФАЙЛОВОЙ СИСТЕМЫ (PART 3)
-# ==============================================================================
-
-# ------------------------------------------------------------------------------
-# Способ 1: Очистка по лог-файлу
-# ------------------------------------------------------------------------------
-# 📖 Где смотреть в гайде:
-#   - DO4_GUIDE.md -> Раздел 1.4 (Guard Clauses для проверки файла)
-# 💡 Где ты это уже делал:
-#   - training/ex05.sh (проверка существования файла -f и объекта -e)
-#   - training/ex06.sh (потоковое чтение файла: while IFS= read -r line)
-#   - training/ex09.sh (парсинг строки лога через read: путь - это 1-я колонка)
-# 🛡️ Инженерная защита:
-#   - Обязательно проверить, что путь НЕ пустой и НЕ равен '/' перед rm -rf!
-# ------------------------------------------------------------------------------
 clean_by_log() {
   echo "Cleanup method 1: by log file"
-  # TODO:
-  # 1. Задать путь к лог-файлу (например, "../02/file.log" или запросить у пользователя)
-  # 2. Проверить, существует ли файл (-f "$log_file")
-  # 3. Построчно прочитать файл (while IFS= read -r line)
-  # 4. Извлечь путь созданного объекта (первая колонка в строке)
-  # 5. Проверить безопасность пути (НЕ корень '/', НЕ пустой путь)
-  # 6. Если объект существует (-e "$target_path"), удалить его (rm -rf "$target_path")
+
+  read -p "Enter path to log file: " log_file
+  if [ ! -f "$log_file" ]; then
+    echo "Error: File not found" >&2
+    exit 1
+  fi
+
+  local count=0
+  while IFS= read -r line; do
+    read -r target_path _ <<< "$line"
+    if [[ "$target_path" =~ ^/ ]] && [ "$target_path" != "/" ] && [ -e "$target_path" ]; then
+      rm -rf "$target_path"
+    (( count++ ))
+    echo "$count: $line"
+    fi
+  done < "$log_file"
+  echo "Total deleted: $count object."
 }
 
-# ------------------------------------------------------------------------------
-# Способ 2: Очистка по дате и времени создания
-# ------------------------------------------------------------------------------
-# 📖 Где смотреть в гайде:
-#   - DO4_GUIDE.md -> Раздел 2.6, пункт 2 ("Поиск по временным интервалам: find -newermt")
-#   - DO4_GUIDE.md -> Раздел 2.8 ("Замер времени выполнения и форматирование дат")
-# 💡 Где ты это уже делал:
-#   - training/ex10.sh (проверка дат, перевод в секунды +%s, валидация порядка end >= start)
-# 🔍 Намёк на синтаксис find:
-#   find /каталог -newermt "$start_date" ! -newermt "$end_date"
-#   (Не забудь отсечь системные каталоги: /bin, /sbin, /dev, /proc, /sys!)
-# ------------------------------------------------------------------------------
 clean_by_time() {
   echo "Cleanup method 2: by creation date/time"
-  # TODO:
-  # 1. Запросить у пользователя дату начала и дату конца (через read -p)
-  #    Формат: YYYY-MM-DD HH:MM
-  # 2. Проверить валидность обеих дат через утилиту date (как разбирали в ex10/ex11)
-  # 3. Проверить, что end_time >= start_time
-  # 4. Найти созданные файлы/папки через find (-newermt)
-  # 5. Удалить найденные объекты (rm -rf)
+  
+  read -r -p "Enter start time (YYYY-MM-DD HH:MM): " start_date
+  read -r -p "Enter end time (YYYY-MM-DD HH:MM): " end_date
+  
+  local ts_start=$(date -d "$start_date" +%s 2>/dev/null)
+  local ts_end=$(date -d "$end_date" +%s 2>/dev/null)
+
+  if [ -z "$ts_start" ] || [ -z "$ts_end" ]; then
+    echo "Error: Invalid format" >&2
+    exit 1
+  fi
+
+  if [[ $ts_end -lt $ts_start ]]; then
+    echo "Error: End time cannot be earlier than start time" >&2
+    exit 1
+  fi
+
+  local find_start="${start_date}:00"
+  local find_end="${end_date}:59"
+
+  while IFS= read -r target; do
+    if [ -e "$target" ]; then
+      rm -rf "$target"
+      echo "Deleted: $target"
+    fi
+  done < <(find / -maxdepth 6 \
+    \( -path '/proc' -o -path '/sys' -o -path '/dev' -o -path '/run' -o -path '/bin' -o -path '/sbin' -o -path '/mnt' -o -path '/media' \) -prune \
+    -o -newermt "$find_start" ! -newermt "$find_end" -name "*_[0-9][0-9][0-9][0-9][0-9][0-9]*" -print 2>/dev/null)
 }
 
 # ------------------------------------------------------------------------------
