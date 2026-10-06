@@ -155,9 +155,34 @@ bash 05/main.sh 1 2   # Ошибка: One argument. (exit 1)
 ### Запуск Part 6 (GoAccess):
 ```bash
 # Синтаксис: main.sh (без аргументов)
-bash 06/main.sh          # Генерирует 06/report.html
-xdg-open 06/report.html  # Открытие отчёта в веб-браузере
+bash 06/main.sh                      # Генерирует 06/report.html
+
+# Способ 1: Открытие HTML-отчёта в браузере (WSL2 / Windows)
+explorer.exe report.html          # Открытие в браузере хоста
+# (или кликнуть по 06/report.html в проводнике VS Code)
+
+# Способ 2: Интерактивный терминальный дашборд (TUI в консоли)
+goaccess 04/*.log --log-format=COMBINED
 ```
 *Результат:* Выполняет проверку окружения (`goaccess`, наличие логов `04/*.log`, запрет аргументов), объединяет 5 лог-файлов Nginx и компилирует интерактивный веб-дашборд `06/report.html`.
+
+### Запуск Part 7 (Prometheus + Grafana: системный мониторинг):
+```bash
+# Синтаксис: main.sh (без аргументов)
+bash 07/main.sh
+```
+*Результат:* Запускает интерактивное меню управления тестами (`07/menu.sh`) для визуализации системных метрик в реальном времени на дашборде Grafana (`07/dashboard.json`):
+1. **Пункт 1:** Запуск стресс-теста CPU и RAM (`stress -c 2 -i 1 -m 1 --vm-bytes 32M -t 10s`) $\to$ всплеск графиков CPU/Memory в Grafana.
+2. **Пункт 2:** Запуск теста диска через `02/main.sh az az.az 10Mb` $\to$ уменьшение свободного места на `/` и рост активности Disk I/O.
+3. **Пункт 3:** Интерактивная очистка файловой системы через `03/main.sh` (по логу, дате или маске).
+4. **Пункт 4:** Быстрый вывод ссылок на веб-интерфейсы Grafana (`http://192.168.56.101:3000`) и Prometheus (`http://192.168.56.101:9090`).
+5. **Пункт 5:** Мгновенная проверка статусов системных демонов (`prometheus`, `prometheus-node-exporter`, `grafana-server`).
+6. **Пункт 0:** Выход из меню.
+
+*Конфигурация дашборда:* Файл `07/dashboard.json` содержит готовую сериализованную конфигурацию кастомного дашборда Grafana с 4 обязательными панелями:
+* **CPU:** `100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)`
+* **Available Memory:** `node_memory_MemAvailable_bytes`
+* **Free Disk Space:** `node_filesystem_avail_bytes{mountpoint="/"}`
+* **Disk I/O:** `irate(node_disk_read_bytes_total[1m])` / `irate(node_disk_written_bytes_total[1m])`
 
 
