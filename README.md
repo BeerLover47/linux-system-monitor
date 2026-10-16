@@ -1,6 +1,20 @@
-# Linux Monitoring v2.0 (DO4)
+# 🐧 Linux System Monitor | Observability & Telemetry Suite
 
-Комплексный проект по автоматизации системного администрирования, генерации и очистке тестовых данных, анализу серверных журналов (Nginx/Apache), мониторингу инфраструктуры и визуализации метрик в стеке **Prometheus + Node Exporter + Grafana** в рамках образовательной программы School 21.
+<p align="center">
+  <img src="https://img.shields.io/badge/bash-5.2+-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash"/>
+  <img src="https://img.shields.io/badge/ubuntu-24.04%20LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"/>
+  <img src="https://img.shields.io/badge/Prometheus-v2.54+-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
+  <img src="https://img.shields.io/badge/Grafana-v11+-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
+  <img src="https://img.shields.io/badge/nginx-1.24+-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx"/>
+  <img src="https://img.shields.io/badge/School%2021-DO4%20(100%25)-00A3FF?style=for-the-badge" alt="School 21"/>
+</p>
+
+Комплексный проект по автоматизации системного администрирования, генерации и очистке тестовых данных, анализу серверных журналов (Nginx/Apache), мониторингу инфраструктуры и визуализации метрик в стеке **Prometheus + Node Exporter + Grafana** в рамках образовательной программы School 21 (проект DO4).
+
+## 👤 Студент / Разработчик
+* **Студент «Школы 21»:** `cecilqua` (`cecilqua@student.21-school.ru`)
+* **GitHub:** [BeerLover47](https://github.com/BeerLover47)
+* **Проект:** DO4 — Linux Monitoring v2.0 (Сдан на 100%)
 
 ---
 
