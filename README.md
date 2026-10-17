@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Prometheus-v2.54%2B-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
   <img src="https://img.shields.io/badge/Grafana-v11%2B-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
   <img src="https://img.shields.io/badge/nginx-1.24%2B-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx"/>
-  <img src="https://img.shields.io/badge/School_21-DO4_100%25-00A3FF?style=for-the-badge" alt="School 21"/>
+  <img src="https://img.shields.io/badge/School_21-DO4_100%25-00DB00?style=for-the-badge" alt="School 21"/>
 </p>
 
 Проект по системному администрированию и мониторингу Linux (School 21, DO4 — сдан на 100%).
