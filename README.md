@@ -1,12 +1,12 @@
 # 🐧 Linux System Monitor (DO4)
 
 <p align="center">
-  <img src="https://img.shields.io/badge/bash-5.2%2B-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash"/>
-  <img src="https://img.shields.io/badge/ubuntu-24.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"/>
-  <img src="https://img.shields.io/badge/Prometheus-v2.54%2B-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
-  <img src="https://img.shields.io/badge/Grafana-v11%2B-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
-  <img src="https://img.shields.io/badge/nginx-1.24%2B-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx"/>
-  <img src="https://img.shields.io/badge/School_21-DO4_100%25-00DB00?style=for-the-badge" alt="School 21"/>
+  <img src="https://img.shields.io/badge/Bash-5.2%2B-1E232A?style=for-the-badge&logo=gnu-bash&logoColor=4EAA25&labelColor=161B22" alt="Bash"/>
+  <img src="https://img.shields.io/badge/Ubuntu-24.04_LTS-1E232A?style=for-the-badge&logo=ubuntu&logoColor=E95420&labelColor=161B22" alt="Ubuntu"/>
+  <img src="https://img.shields.io/badge/Prometheus-v2.54%2B-1E232A?style=for-the-badge&logo=prometheus&logoColor=E6522C&labelColor=161B22" alt="Prometheus"/>
+  <img src="https://img.shields.io/badge/Grafana-v11%2B-1E232A?style=for-the-badge&logo=grafana&logoColor=F46800&labelColor=161B22" alt="Grafana"/>
+  <img src="https://img.shields.io/badge/Nginx-1.24%2B-1E232A?style=for-the-badge&logo=nginx&logoColor=009639&labelColor=161B22" alt="Nginx"/>
+  <img src="https://img.shields.io/badge/School_21-DO4_100%25-00873E?style=for-the-badge&labelColor=161B22" alt="School 21"/>
 </p>
 
 Проект по системному администрированию и мониторингу Linux (School 21, DO4 — сдан на 100%).
