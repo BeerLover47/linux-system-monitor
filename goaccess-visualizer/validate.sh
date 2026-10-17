@@ -11,7 +11,7 @@ validate_all() {
     exit 1
   fi
 
-  if ! compgen -G "$DIR/../04/*.log" >/dev/null; then
+  if ! compgen -G "$DIR/../nginx-log-generator/*.log" >/dev/null; then
     echo "Error: Log files not found." >&2
     exit 1
   fi

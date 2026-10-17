@@ -6,7 +6,7 @@ source "$DIR/filter.sh"
 
 validate_arg "$@"
 
-log_dir=$DIR/../04/
+log_dir=$DIR/../nginx-log-generator/
 check_logs "$log_dir"
 log_files=("$log_dir"/*.log)
 

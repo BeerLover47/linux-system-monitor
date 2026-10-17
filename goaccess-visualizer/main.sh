@@ -5,5 +5,5 @@ source "$DIR/validate.sh"
 
 validate_all "$@"
 
-goaccess "$DIR/../04/"*.log --log-format=COMBINED -o "$DIR/report.html"
+goaccess "$DIR/../nginx-log-generator/"*.log --log-format=COMBINED -o "$DIR/report.html"
 echo "Report generated: $DIR/report.html"

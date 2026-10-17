@@ -6,10 +6,10 @@ context_menu() {
     echo "===== Test menu ====="
     echo "1) Run test iperf3"
     echo "2) Run stress-test CPU/RAM"
-    echo "3) Run test disk (Part 2)"
-    echo "4) Clear dist after disk test"
+    echo "3) Run storage stress test (fs-stress-fill)"
+    echo "4) Clear disk after storage test"
     echo "5) Get link for utilities"
-    echo "0) Exit [[_[]"
+    echo "0) Exit ^_^"
 
     read -rp "Choose action [0-5]: " choice
     IP=$(hostname -I | awk '{print $1}')
@@ -26,7 +26,7 @@ context_menu() {
     ;;
     3)
     echo "Run test disk"
-    "$DIR/../02/main.sh" az az.az 10Mb
+    "$DIR/../fs-stress-fill/main.sh" az az.az 10Mb
     ;;
     4)
     echo ""
@@ -34,8 +34,8 @@ context_menu() {
     echo "1) By Log File"
     echo "2) By date and time"
     echo "3) By mask name"
-    read -rp "Cleaning mode [1-3]; " clean_mode
-    "$DIR/../03/main.sh" "$clean_mode"
+    read -rp "Cleaning mode [1-3]: " clean_mode
+    "$DIR/../fs-cleaner/main.sh" "$clean_mode"
     ;;
     5)
     link

@@ -5,8 +5,8 @@ context_menu() {
       echo ""
       echo "===== Test management menu ====="
       echo "1) Run stress-test CPU / RAM (stress)"
-      echo "2) Run test disk (Part 2)"
-      echo "3) Clear disk after disk test"
+      echo "2) Run storage stress test (fs-stress-fill)"
+      echo "3) Clear disk after storage test"
       echo "4) Get link for utilities"
       echo "5) Check services status"
       echo "0) Exit ^_^"
@@ -19,7 +19,7 @@ context_menu() {
         ;;
         2)
         echo "Run test disk"
-        "$DIR/../02/main.sh" az az.az 10Mb
+        "$DIR/../fs-stress-fill/main.sh" az az.az 10Mb
         ;;
         3)
         echo ""
@@ -28,7 +28,7 @@ context_menu() {
         echo "2) By date and time"
         echo "3) By mask name"
         read -rp "Cleaning mode [1-3]: " clean_mode
-        "$DIR/../03/main.sh" "$clean_mode"
+        "$DIR/../fs-cleaner/main.sh" "$clean_mode"
         ;;
         4)
         link
