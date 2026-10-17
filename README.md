@@ -1,12 +1,12 @@
 # 🐧 Linux System Monitor (DO4)
 
 <p align="center">
-  <img src="https://img.shields.io/badge/bash-5.2+-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash"/>
-  <img src="https://img.shields.io/badge/ubuntu-24.04%20LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"/>
-  <img src="https://img.shields.io/badge/Prometheus-v2.54+-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
-  <img src="https://img.shields.io/badge/Grafana-v11+-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
-  <img src="https://img.shields.io/badge/nginx-1.24+-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx"/>
-  <img src="https://img.shields.io/badge/School%2021-DO4%20(100%25)-00A3FF?style=for-the-badge" alt="School 21"/>
+  <img src="https://img.shields.io/badge/bash-5.2%2B-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash"/>
+  <img src="https://img.shields.io/badge/ubuntu-24.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu"/>
+  <img src="https://img.shields.io/badge/Prometheus-v2.54%2B-E6522C?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus"/>
+  <img src="https://img.shields.io/badge/Grafana-v11%2B-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"/>
+  <img src="https://img.shields.io/badge/nginx-1.24%2B-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx"/>
+  <img src="https://img.shields.io/badge/School_21-DO4_100%25-00A3FF?style=for-the-badge" alt="School 21"/>
 </p>
 
 ## 👤 Разработчик
@@ -40,7 +40,7 @@
    - `create.sh` — взаимодействие с диском и системными вызовами ядра.
 
 2. **Защита от сбоя файловой системы (Zero-Crash):**  
-   Любые операции аллокации файлов контролируют остаток дискового пространства через `df --output=avail -m /`. Если на диске остается $\le 1024$ Мб, скрипты немедленно завершают работу во избежание kernel panic или повреждения системных файлов хоста.
+   Любые операции аллокации файлов контролируют остаток дискового пространства через `df --output=avail -m /`. Если на диске остается ≤ 1024 Мб, скрипты немедленно завершают работу во избежание kernel panic или повреждения системных файлов хоста.
 
 3. **Независимость от рабочего каталога:**  
    Все скрипты корректно определяют свой физический путь через `${BASH_SOURCE[0]}` и могут запускаться из любой директории:
@@ -56,7 +56,7 @@
 | Часть | Модуль | Назначение | Ключевые технологии и утилиты |
 |:---:|:---|:---|:---|
 | **01** | **Генератор файлов** | Создание файловой структуры с именами по алфавитной маске (`az_DDMMYY`), фиксированным весом в Кб и ведением журнала `file.log`. | Bash, ERE, `fallocate`, `df --output=avail` |
-| **02** | **Засорение ФС** | Создание до 100 папок со случайным числом файлов до 100 Мб в случайных каталогах ОС до остатка $\le 1$ Гб. Замер времени выполнения. | Bash, `$RANDOM`, `shuf`, замер времени |
+| **02** | **Засорение ФС** | Создание до 100 папок со случайным числом файлов до 100 Мб в случайных каталогах ОС до остатка ≤ 1 Гб. Замер времени выполнения. | Bash, `$RANDOM`, `shuf`, замер времени |
 | **03** | **Очистка ФС** | Три алгоритма очистки системы: по лог-файлу, по дате/времени создания (`find -newermt`), по маске имени (`*_DDMMYY`). | `find`, Process Substitution, `read` |
 | **04** | **Генератор логов** | Генерация 5 файлов веб-логов Nginx в Combined Log Format со случайными IP, HTTP-кодами, методами и строго возрастающим временем Unix Epoch. | Bash, Combined Log Format, Unix Epoch |
 | **05** | **Анализ логов в awk** | Высокопроизводительный потоковый парсинг логов Nginx через `awk` (сортировка по кодам, уникальные IP, фильтрация ошибок 4xx/5xx). | `awk`, `sort -k9,9n`, Zero-Fork валидация `compgen` |
