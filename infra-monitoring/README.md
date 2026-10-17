@@ -39,6 +39,11 @@
   2. **Available Memory (MB):** `node_memory_MemAvailable_bytes / 1024 / 1024`
   3. **Disk Free Space (GB):** `node_filesystem_free_bytes{mountpoint="/"} / 1024 / 1024 / 1024`
   4. **Network I/O (KB/s):** `rate(node_network_receive_bytes_total[1m]) / 1024`
+
+<p align="center">
+  <img src="../assets/grafana-core-metrics.png" alt="Grafana 4 Core Metrics Dashboard" width="100%"/>
+</p>
+
 * **Интерактивные сценарии нагрузки:**  
   Прямо из консольного меню можно запустить `stress` на CPU и память или вызвать `fs-stress-fill`, чтобы в реальном времени наблюдать скачки графиков в Grafana.
 

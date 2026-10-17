@@ -35,6 +35,11 @@ iperf3 -c <target_ip> -p 5201 -t 30 -P 4
 
 * **Production Dashboard (`13978_rev2.json`):**  
   В каталог включен популярный промышленный дашборд *Node Exporter Full (ID 13978 / 1860)* с детализацией по IOPS диска, свитчам контекста процессора, системным прерываниям и сокетам TCP/UDP.
+
+<p align="center">
+  <img src="../assets/grafana-node-exporter.png" alt="Node Exporter Full Dashboard" width="100%"/>
+</p>
+
 * **Нагрузка на выносливость:**  
   * `stress` нагружает вычислительные ядра (`-c 1`) и выделяет виртуальную память в кольцевой буфер (`--vm-bytes 32M`), вызывая всплеск на графиках нагрузки CPU и потребления RAM.
   * Тест `fs-stress-fill` генерирует интенсивную дисковую активность (IOPS), что наглядно видно на панелях утилизации диска (Disk I/O time & read/write bandwidth).

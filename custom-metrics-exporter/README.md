@@ -56,3 +56,12 @@ my_disk_free 24510488576
         - targets: ['localhost:80']
   ```
 
+<p align="center">
+  <img src="../assets/prometheus-targets.png" alt="Prometheus Targets (1/1 up)" width="100%"/>
+</p>
+
+### Отображение метрик кастомного экспортера в Grafana:
+<p align="center">
+  <img src="../assets/grafana-custom-exporter.png" alt="Grafana Custom Exporter Dashboard" width="100%"/>
+</p>
+

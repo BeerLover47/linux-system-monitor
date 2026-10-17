@@ -61,6 +61,28 @@
 
 ---
 
+## 📸 Дашборды и телеметрия
+
+### 📊 1. Потоковая веб-аналитика логов Nginx (GoAccess)
+<p align="center">
+  <img src="./assets/goaccess-report.png" alt="GoAccess Web Analytics Dashboard" width="100%"/>
+</p>
+
+### 📈 2. Нагрузочное тестирование и системные метрики (Grafana + Node Exporter)
+<p align="center">
+  <img src="./assets/grafana-node-exporter.png" alt="Grafana Node Exporter Dashboard" width="100%"/>
+</p>
+
+### 📡 3. Кастомный Bash-экспортер и статус скрейпинга (Prometheus + Grafana)
+<p align="center">
+  <img src="./assets/prometheus-targets.png" alt="Prometheus Targets (1/1 up)" width="100%"/>
+</p>
+<p align="center">
+  <img src="./assets/grafana-custom-exporter.png" alt="Grafana Custom Exporter Dashboard" width="100%"/>
+</p>
+
+---
+
 ## ⚡ Инженерные стандарты реализации
 
 1. **Guard Clauses (Защитные барьеры):**  

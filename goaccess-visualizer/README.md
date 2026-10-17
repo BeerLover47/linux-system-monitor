@@ -17,9 +17,15 @@ Report generated: ./report.html
 
 Файл `report.html` содержит интерактивные графики, таблицы запросов, статус-коды, географию IP и User-Agent агентов. Его можно открыть в любом браузере:
 ```bash
-# В WSL2 / Ubuntu:
+# В WSL2 / Windows:
+cmd.exe /c start report.html
+# В нативном Linux:
 xdg-open report.html || sensible-browser report.html
 ```
+
+<p align="center">
+  <img src="../assets/goaccess-report.png" alt="GoAccess Web Analytics Report" width="100%"/>
+</p>
 
 ---
 
