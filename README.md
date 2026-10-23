@@ -6,7 +6,6 @@
   <a href="#"><img src="https://img.shields.io/badge/Prometheus-v2.54%2B-1E232A?style=for-the-badge&logo=prometheus&logoColor=E6522C&labelColor=161B22" alt="Prometheus"/></a>
   <a href="#"><img src="https://img.shields.io/badge/Grafana-v11%2B-1E232A?style=for-the-badge&logo=grafana&logoColor=F46800&labelColor=161B22" alt="Grafana"/></a>
   <a href="#"><img src="https://img.shields.io/badge/Nginx-1.24%2B-1E232A?style=for-the-badge&logo=nginx&logoColor=009639&labelColor=161B22" alt="Nginx"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Status-Completed-00873E?style=for-the-badge&labelColor=161B22" alt="Completed"/></a>
 </p>
 
 Модульный набор инструментов и скриптов системного администрирования Linux на чистом Bash.
